@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f4fbfb" />
+  <title>ASTRO NOVA | Beyond Earth, Protecting Life</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home"><span class="brand-mark">✦</span> ASTRO NOVA</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+    <nav id="mainNav">
+      <a href="#home">Home</a><a href="#dashboard">Dashboard</a><a href="#monitor">Monitoring</a>
+      <a href="#wellness">Wellness</a><a href="#medical">Medical Team</a>
+    </nav>
+    <span class="status-pill"><i></i> SYSTEM READY</span>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">NEXT-GENERATION SPACE HEALTH TECHNOLOGY</p>
+        <h1>Beyond Earth,<br><span>Protecting Life.</span></h1>
+        <p class="hero-lead">AI-Powered Astronaut Health Monitoring System</p>
+        <p class="muted">Intelligent health information, connected monitoring and medical-team support for the next generation of space exploration.</p>
+        <div class="actions">
+          <a class="btn primary" href="#dashboard">Explore Platform <span>↗</span></a>
+          <a class="btn secondary" href="#overview">Watch Overview</a>
+          <a class="text-link" href="#monitor">Get Started</a>
+        </div>
+        <div class="hero-note"><span class="pulse"></span> REAL DATA ONLY · NO MEASUREMENT, NO RESULT</div>
+      </div>
+      <div class="hero-art" aria-label="Illustration of Earth and a space station">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="planet"><div class="planet-shade"></div></div>
+        <div class="station">✧</div>
+        <div class="float-card"><small>MISSION STATUS</small><strong>Health-aware exploration</strong><span>Evidence-led monitoring</span></div>
+      </div>
+    </section>
+
+    <section class="section overview" id="overview">
+      <div class="section-heading"><p class="eyebrow">THE PLATFORM</p><h2>One connected view of astronaut wellbeing.</h2>
+      <p class="muted">Collect measurements from compatible devices or enter verified observations manually. This starter app does not invent readings or make medical diagnoses.</p></div>
+      <div class="feature-grid">
+        <article class="feature-card"><b>01</b><div class="feature-icon">⌁</div><h3>Health signals</h3><p>Record supported vital measurements with source and timestamp.</p></article>
+        <article class="feature-card"><b>02</b><div class="feature-icon">◎</div><h3>Camera observations</h3><p>Camera preview and optional QR scanning, subject to browser support.</p></article>
+        <article class="feature-card"><b>03</b><div class="feature-icon">◖</div><h3>Voice assistant</h3><p>Use browser speech features to dictate a symptom note.</p></article>
+        <article class="feature-card"><b>04</b><div class="feature-icon">✚</div><h3>Medical review</h3><p>Organize reports for review by qualified medical personnel.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="dashboard">
+      <div class="section-heading row-heading"><div><p class="eyebrow">MISSION OVERVIEW</p><h2>Astronaut dashboard</h2></div><span class="tag">LIVE SESSION · LOCAL ONLY</span></div>
+      <div class="vitals-grid">
+        <article class="vital-card"><span>HEART RATE</span><strong id="heartDisplay">—</strong><small>BPM · No data available</small></article>
+        <article class="vital-card"><span>BLOOD OXYGEN</span><strong id="spo2Display">—</strong><small>SpO₂ · No data available</small></article>
+        <article class="vital-card"><span>TEMPERATURE</span><strong id="tempDisplay">—</strong><small>°C · No data available</small></article>
+        <article class="vital-card"><span>BLOOD PRESSURE</span><strong id="bpDisplay">—</strong><small>mmHg · No data available</small></article>
+      </div>
+      <div class="panel trend-panel">
+        <div class="panel-head"><div><p class="eyebrow">MEASUREMENT LOG</p><h3>Recorded readings</h3></div><span class="tag">NO SYNTHETIC DATA</span></div>
+        <div id="readingList" class="empty-state">No measurements recorded. Add a reading in Monitoring to see it here.</div>
+      </div>
+      <div class="disclaimer">This is a student project prototype, not a medical device. Values are not interpreted as diagnoses. In a real mission, clinical thresholds and escalation rules must be approved by qualified medical professionals.</div>
+    </section>
+
+    <section class="section monitor-layout" id="monitor">
+      <div class="section-heading"><p class="eyebrow">DATA INPUT</p><h2>Monitoring station</h2><p class="muted">Only readings you enter appear in the dashboard. Add the measurement source and time; do not enter estimates as measured data.</p></div>
+      <div class="two-col">
+        <form class="panel form-panel" id="readingForm">
+          <h3>Enter a measured reading</h3>
+          <label>Measurement<select id="metric" required><option value="heart">Heart rate (BPM)</option><option value="spo2">Blood oxygen / SpO₂ (%)</option><option value="temperature">Body temperature (°C)</option><option value="bp">Blood pressure (mmHg)</option></select></label>
+          <div class="form-row"><label>Value<input id="readingValue" type="text" placeholder="Enter measured value" required /></label><label>Source<select id="readingSource"><option>Manual entry</option><option>Compatible device (verified externally)</option></select></label></div>
+          <label>Measurement note (optional)<input id="readingNote" type="text" maxlength="120" placeholder="Device / context" /></label>
+          <button class="btn primary full" type="submit">Save measured reading</button>
+          <p class="form-hint">This prototype records your entry in the current browser session only. It does not validate clinical accuracy.</p>
+        </form>
+        <div class="panel device-panel">
+          <h3>Device connections</h3><p class="muted">Browser Bluetooth support varies by device and browser. A generic web page cannot read every medical wearable or ECG sensor.</p>
+          <div class="device-row"><span><b>Bluetooth</b><small id="bluetoothStatus">Not connected</small></span><button class="btn secondary" id="bluetoothBtn" type="button">Check support</button></div>
+          <div class="device-row"><span><b>ECG</b><small>No compatible ECG data source connected</small></span><span class="tag">NO DATA</span></div>
+          <div class="device-row"><span><b>Sleep / activity</b><small>Connect an approved data source in a future backend integration</small></span><span class="tag">NO DATA</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section camera-section">
+      <div class="section-heading"><p class="eyebrow">CAMERA MODULE</p><h2>Camera & QR station</h2><p class="muted">Camera access requires HTTPS or localhost and your permission. This version provides a live preview and QR scan where supported; it does not infer health conditions from a face.</p></div>
+      <div class="two-col">
+        <div class="panel camera-panel">
+          <video id="cameraVideo" autoplay muted playsinline></video>
+          <div class="camera-placeholder" id="cameraPlaceholder"><span>◎</span><b>Camera is off</b><small>Start camera to enable preview</small></div>
+          <div class="actions"><button class="btn primary" id="startCamera" type="button">Start camera</button><button class="btn secondary" id="stopCamera" type="button" disabled>Stop</button><button class="btn secondary" id="captureBtn" type="button" disabled>Capture image</button></div>
+          <p class="form-hint" id="cameraStatus" aria-live="polite">No camera access has been requested.</p>
+          <canvas id="captureCanvas" hidden></canvas>
+        </div>
+        <div class="panel qr-panel">
+          <div class="feature-icon">▦</div><h3>QR / equipment scanner</h3>
+          <p class="muted">Uses the camera stream and the browser Barcode Detection API if available. QR content is shown as text only; it is not treated as verified medicine information.</p>
+          <button class="btn secondary" id="scanQrBtn" type="button" disabled>Scan QR from camera</button>
+          <div id="qrResult" class="empty-state compact">No QR code scanned.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="wellness">
+      <div class="section-heading"><p class="eyebrow">HUMAN-CENTRED CARE</p><h2>Symptoms & wellness check-in</h2><p class="muted">Record what the astronaut reports. Entries are not diagnoses and should be reviewed by the medical team.</p></div>
+      <div class="two-col">
+        <form class="panel form-panel" id="symptomForm">
+          <h3>Submit a symptom report</h3>
+          <label>Body region<select id="bodyRegion"><option>Head</option><option>Eyes</option><option>Chest</option><option>Lungs</option><option>Stomach</option><option>Muscles</option><option>Bones / joints</option><option>Other</option></select></label>
+          <label>What are you experiencing?<textarea id="symptomText" rows="3" required maxlength="600" placeholder="Describe the symptom in your own words"></textarea></label>
+          <div class="form-row"><label>Reported severity<select id="severity"><option>Mild</option><option>Moderate</option><option>Severe</option><option>Unsure</option></select></label><label>Duration<input id="duration" placeholder="e.g. 30 minutes" /></label></div>
+          <button class="btn primary full" type="submit">Save symptom report</button>
+        </form>
+        <form class="panel form-panel" id="wellnessForm">
+          <h3>Wellness check-in</h3>
+          <label>Mood<select id="mood"><option value="">Choose one</option><option>Good</option><option>Okay</option><option>Low</option><option>Anxious</option></select></label>
+          <label>Stress level<select id="stress"><option value="">Choose one</option><option>Low</option><option>Moderate</option><option>High</option></select></label>
+          <label>Fatigue<select id="fatigue"><option value="">Choose one</option><option>None reported</option><option>Mild</option><option>Moderate</option><option>High</option></select></label>
+          <button class="btn primary full" type="submit">Save wellness check-in</button>
+        </form>
+      </div>
+      <div class="panel history-panel"><div class="panel-head"><h3>Reports & check-ins</h3><button class="text-link" id="clearSession" type="button">Clear this session</button></div><div id="reportList" class="empty-state">No symptom or wellness reports yet.</div></div>
+    </section>
+
+    <section class="section assistant-section">
+      <div class="section-heading"><p class="eyebrow">VOICE INTERFACE</p><h2>Nova voice assistant</h2><p class="muted">Speech recognition availability depends on your browser. Dictated text is only added to the symptom form; it is not sent to a medical team.</p></div>
+      <div class="panel voice-panel"><div class="voice-orb">✧</div><div class="voice-copy"><h3>Speak a health note</h3><p id="voiceStatus" class="muted">Voice assistant is idle.</p><div class="actions"><button class="btn primary" id="voiceBtn" type="button">Start voice input</button><button class="btn secondary" id="speakBtn" type="button">Speak help</button></div></div></div>
+    </section>
+
+    <section class="section" id="medical">
+      <div class="section-heading"><p class="eyebrow">CLINICAL COLLABORATION</p><h2>Medical team workspace</h2><p class="muted">A real medical dashboard requires authenticated roles, secure server storage, audit logs and access controls. This prototype only summarizes current-session entries on this device.</p></div>
+      <div class="panel medical-panel"><div><h3>Current session report</h3><p class="muted">Export a local summary for review. No notification or emergency alert is sent by this button.</p></div><button class="btn primary" id="exportBtn" type="button">Export session report</button></div>
+    </section>
+
+    <section class="section sos-section">
+      <div class="sos-card"><div><p class="eyebrow">EMERGENCY WORKFLOW CONCEPT</p><h2>Need urgent assistance?</h2><p>This prototype cannot contact mission control or emergency services. Use the approved real-world emergency procedure and contact a qualified person.</p></div><button class="btn sos-btn" id="sosBtn" type="button">Create local SOS report</button></div>
+      <p id="sosStatus" class="form-hint" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#home">✦ ASTRO NOVA</a><span>Beyond Earth, Protecting Life.</span><span>Student prototype · Not a medical device</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
